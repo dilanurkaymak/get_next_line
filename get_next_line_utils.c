@@ -6,7 +6,7 @@
 /*   By: dkaymak <dkaymak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:17:04 by dkaymak           #+#    #+#             */
-/*   Updated: 2025/08/19 14:03:43 by dkaymak          ###   ########.fr       */
+/*   Updated: 2025/08/19 20:10:26 by dkaymak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-	{
-		str = malloc(1);
-		if (!str)
-			return (NULL);
-		str[0] = '\0';
-		return (str);
-	}
+		return (ft_calloc(1, 1));
 	if (len > s_len - start)
 		len = s_len - start;
 	str = malloc(len + 1);
@@ -111,8 +105,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (!nmemb || !size)
 		return (malloc(0));
 	total = nmemb * size;
-	if (nmemb != 0 && total / nmemb != size)
-		return (NULL);
 	ptr = malloc(total);
 	if (!ptr)
 		return (NULL);
