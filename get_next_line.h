@@ -6,7 +6,7 @@
 /*   By: dkaymak <dkaymak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:49:34 by dkaymak           #+#    #+#             */
-/*   Updated: 2025/08/19 11:47:01 by dkaymak          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:23:09 by dkaymak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 13
+#  define BUFFER_SIZE 199999
 # endif
 
 char	*get_next_line(int fd);

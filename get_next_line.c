@@ -6,13 +6,15 @@
 /*   By: dkaymak <dkaymak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 14:09:35 by dkaymak           #+#    #+#             */
-/*   Updated: 2025/08/19 12:08:36 by dkaymak          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:23:26 by dkaymak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
+
 
 static char	*join_and_free(char *stash, char *buffer)
 {
@@ -84,4 +86,11 @@ char	*get_next_line(int fd)
 	if (!stash)
 		return (NULL);
 	return (extract_line(&stash));
+}
+
+int main ()
+{
+	int fd;
+	fd = open("a.txt", O_RDONLY);
+	printf("%s", get_next_line(0));
 }
