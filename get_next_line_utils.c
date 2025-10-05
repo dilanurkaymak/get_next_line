@@ -6,7 +6,7 @@
 /*   By: dkaymak <dkaymak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:17:04 by dkaymak           #+#    #+#             */
-/*   Updated: 2025/08/19 20:10:26 by dkaymak          ###   ########.fr       */
+/*   Updated: 2025/08/22 15:55:02 by dkaymak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*joined;
 	size_t	len1;

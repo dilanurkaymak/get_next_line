@@ -6,7 +6,7 @@
 /*   By: dkaymak <dkaymak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 14:09:35 by dkaymak           #+#    #+#             */
-/*   Updated: 2025/08/19 20:06:50 by dkaymak          ###   ########.fr       */
+/*   Updated: 2025/08/22 21:41:20 by dkaymak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ static char	*read_to_stash(int fd, char *stash)
 	{
 		reading = read(fd, buffer, BUFFER_SIZE);
 		if (reading == -1)
-			return (free(buffer), NULL);
+		{
+			free(buffer);
+			free(stash);
+			stash = NULL;
+			return (NULL);
+		}
 		buffer[reading] = '\0';
 		stash = join_and_free(stash, buffer);
 		if (!stash)
@@ -65,6 +70,11 @@ static char	*extract_line(char **stash)
 	new_stash = ft_substr(*stash, i, ft_strlen(*stash) - i);
 	free(*stash);
 	*stash = new_stash;
+	if (*stash && **stash == '\0')
+	{
+		free(*stash);
+		*stash = NULL;
+	}
 	return (line);
 }
 
@@ -73,7 +83,9 @@ char	*get_next_line(int fd)
 	static char	*stash;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
 		return (NULL);
+	}
 	if (!stash)
 		stash = ft_calloc(1, 1);
 	if (!stash)
